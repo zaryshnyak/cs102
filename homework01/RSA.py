@@ -1,56 +1,57 @@
 import random
-
 import math
 
-def is_prime(n):	
-	for i in range(2, math.floor(math.sqrt(n)) + 1):
-		if (n % i == 0):
-			return False
-	return True	
+
+def is_prime(n):
+    for i in range(2, math.floor(math.sqrt(n)) + 1):
+        if (n % i == 0):
+            return False
+    return True
+
 
 def gcd(a, b):
-	while (a % b != 0):
-		c = b
-		b = a % b
-		a = c
-	return b
+    while (a % b != 0):
+        c = b
+        b = a % b
+        a = c
+    return b
+
 
 def multiplicative_inverse(e, phi):
-	a = phi
-	b = e
-	c = a%b
-	d = a//b
-	i = 0
-	mass = []
-	while True:
-		mass.append([])
-		mass[i].append(a)
-		mass[i].append(b)
-		mass[i].append(c)
-		mass[i].append(d)
-		buf = b
-		b = a % b
-		a = buf
-		c = a%b
-		d = a//b
-		i += 1
-		if (a % b == 0):
-			mass.append([])
-			mass[i].append(a)
-			mass[i].append(b)
-			mass[i].append(c)
-			mass[i].append(d)
-			break
-	x = mass[i][2]
-	y = mass[i][1]
-	
-	while ((i - 1) >= 0):
-		buf = x
-		x = y
-		y = buf - y * mass[i - 1][3]
-		i -= 1
+    a = phi
+    b = e
+    c = a % b
+    d = a//b
+    i = 0
+    mass = []
+    while True:
+        mass.append([])
+        mass[i].append(a)
+        mass[i].append(b)
+        mass[i].append(c)
+        mass[i].append(d)
+        buf = b
+        b = a % b
+        a = buf
+        c = a % b
+        d = a//b
+        i += 1
+        if (a % b == 0):
+            mass.append([])
+            mass[i].append(a)
+            mass[i].append(b)
+            mass[i].append(c)
+            mass[i].append(d)
+            break
+    x = mass[i][2]
+    y = mass[i][1]
+    while ((i - 1) >= 0):
+        buf = x
+        x = y
+        y = buf - y * mass[i - 1][3]
+        i -= 1
+    return y % phi
 
-	return y%phi
 
 def generate_keypair(p, q):
     if not (is_prime(p) and is_prime(q)):
@@ -67,11 +68,6 @@ def generate_keypair(p, q):
     d = multiplicative_inverse(e, phi)
     return ((e, n), (d, n))
 
-print('Input p:')
-p = int(input())
-print('Input q:')
-q = int(input())
-print (generate_keypair(p, q))
 
 def encrypt(pk, plaintext):
     # Unpack the key into it's components

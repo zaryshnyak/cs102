@@ -8,23 +8,24 @@
     'LXFOPVEFRNHR'
 """
 
+
 def encrypt_vigenere(plaintext, keyword):
     ciphertext = ''
-    print ("Вводим:", plaintext)
+    print("Вводим:", plaintext)
     for index, ch in enumerate(plaintext):
         if 'a' <= ch <= 'z' or 'A' <= ch <= 'Z':
-            shift = ord(keyword[index % len(keyword)]) # сдвиг, ключевое слово, индекс
+            shift = ord(keyword[index % len(keyword)])  # сдвиг,кл.слово,индекс
             shift -= ord('a') if 'a' <= ch <= 'z' else ord('A')
-            code = ord(ch) + shift # код, сдвиг 
+            code = ord(ch) + shift  # код, сдвиг
             if 'a' <= ch <= 'z' and code > ord('z'):
                 code -= 26
             elif 'A' <= ch <= 'Z' and code > ord('Z'):
                 code -= 26
             ciphertext += chr(code)
-        else: # остальное
+        else:  # остальное
             ciphertext += ch
-    print ("Получаем:", ciphertext)
-    return ciphertext # возврат  зашифрованного текста
+    print("Получаем:", ciphertext)
+    return ciphertext  # возврат  зашифрованного текста
 encrypt_vigenere("ATTACKATDAWN", "LEMON")
 
 """
@@ -36,7 +37,9 @@ encrypt_vigenere("ATTACKATDAWN", "LEMON")
 >>> decrypt_vigenere("LXFOPVEFRNHR", "LEMON")
 'ATTACKATDAWN'
 """
-def decrypt_vigenere(ciphertext, keyword):    
+
+
+def decrypt_vigenere(ciphertext, keyword):
     plaintext = ''
     for index, ch in enumerate(ciphertext):
         if 'a' <= ch <= 'z' or 'A' <= ch <= 'Z':
@@ -52,4 +55,4 @@ def decrypt_vigenere(ciphertext, keyword):
             plaintext += ch
     print("Расшифровка", plaintext)
     return plaintext
-decrypt_vigenere ("LXFOPVEFRNHR", "LEMON")
+decrypt_vigenere("LXFOPVEFRNHR", "LEMON")
