@@ -1,0 +1,14 @@
+class Entity:
+	name = '' 
+	age = 0
+	@staticmethod
+	def NameClass():
+		return 'Entity'
+	def NameOut(self):
+		return self.name
+
+
+class People(Entity):
+	is_alive = ''
+	def NameOut(self):
+		return self.is_alive

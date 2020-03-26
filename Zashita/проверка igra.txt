@@ -1,0 +1,27 @@
+>>> class Entity:
+...     name = ''
+...     age = 0
+...     @staticmethod
+...     def NameClass():
+...             return 'Entity'
+...     def NameOut(self):
+...             return self.name
+...
+>>> class People(Entity):
+...     is_alive = ''
+...     def NameOut(self):
+...             return self.is_alive
+...
+>>> w = Entity()
+>>> E = People()
+>>> w.name
+''
+>>> w.name = 'Sergey' 
+>>> w.name
+'Sergey'
+>>> E.is_alive = 'Ivan'
+>>> E.is_alive   
+'Ivan'
+>>> E.NameOut()
+'Ivan'
+>>>

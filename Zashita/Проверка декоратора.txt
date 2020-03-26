@@ -1,0 +1,21 @@
+>>> def Test_MyName(func):
+	def wrapper(arg):
+		if str(arg) == 'Sergey':
+			print('Yes, my name is ' + func(arg))
+		else:
+			print('error')
+	return wrapper
+
+
+>>> @Test_MyName
+def MyName(name):
+	return name
+
+
+>>> MyName('Sergey')
+Yes, my name is Sergey
+
+
+>>> MyName('Ivan')
+error
+>>>  

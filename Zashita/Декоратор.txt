@@ -1,0 +1,10 @@
+def MyName(name):
+	return name
+
+def Test_MyName(func):
+	def wrapper(arg):
+		if str(arg) == 'Sergey':
+			print('Yes, my name is ' + func(arg))
+		else:
+			print('error')
+	return wrapper
