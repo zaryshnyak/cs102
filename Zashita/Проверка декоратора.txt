@@ -1,9 +1,13 @@
 >>> def Test_MyName(func):
 	def wrapper(arg):
-		if str(arg) == 'Sergey':
-			print('Yes, my name is ' + func(arg))
+		if isinstance(arg,str):
+			print(func(arg) + ' - this is string.')
+			if str(arg) == 'Serge':
+				print('Yes,my name ' + func(arg))
+			else:
+				print('error')
 		else:
-			print('error')
+			print('this is not string.')
 	return wrapper
 
 
@@ -12,10 +16,16 @@ def MyName(name):
 	return name
 
 
->>> MyName('Sergey')
-Yes, my name is Sergey
+>>> MyName(345)
+this is not string.
 
 
->>> MyName('Ivan')
+>>> MyName('eggtb')
+eggtb - this is string.
 error
->>>  
+
+
+>>> MyName('Serge')
+Serge - this is string.
+Yes,my name Serge
+>>> 
